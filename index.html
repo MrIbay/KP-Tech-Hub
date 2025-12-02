@@ -283,40 +283,52 @@
     document.getElementById('checkoutSection').scrollIntoView({behavior:'smooth'});
   });
 
-  // --- Checkout Form with Detailed EmailJS Logging ---
-  checkoutForm.addEventListener('submit', (e)=>{
+  // --- Checkout Form Fix for EmailJS ---
+  checkoutForm.addEventListener('submit', async (e)=>{
     e.preventDefault();
     if(cartItems.length === 0){alert("Your cart is empty!"); return;}
 
     const formData = new FormData(checkoutForm);
     const orderId = 'ORD-'+Math.floor(Math.random()*1000000);
+
+    // Prepare orders array for EmailJS template
+    const emailOrders = cartItems.map(item => ({
+      name: item.name,
+      units: item.units,
+      price: item.price
+    }));
+
     const templateParams = {
       order_id: orderId,
       name: formData.get('name'),
       email: formData.get('email'),
       address: formData.get('address'),
       payment: formData.get('payment'),
-      orders: cartItems.map(i=>`${i.name} x${i.units} @₱${i.price}`).join(', '),
-      total: cartItems.reduce((acc,i)=>acc + i.price*i.units,0)
+      orders: emailOrders,
+      cost: {
+        shipping: 0,
+        tax: 0,
+        total: cartItems.reduce((acc,i)=>acc + i.price*i.units,0)
+      }
     };
 
     console.log("Sending EmailJS templateParams:", templateParams);
 
-    emailjs.send("service_3yf7sod","template_tx5pdu8",templateParams)
-      .then((response)=>{
-        console.log("EmailJS Success:", response);
-        alert(`Thank you ${templateParams.name}, your order #${orderId} has been sent!`);
-        cartItems = [];
-        cartDisplay.textContent = "🛒 Cart (0)";
-        updateCartTable();
-        checkoutForm.reset();
-        document.getElementById('checkoutSection').style.display='none';
-        document.getElementById('cartPage').style.display='none';
-      })
-      .catch((err)=>{
-        console.error("EmailJS Error:", err);
-        alert("Failed to send order. Check console for details.");
-      });
+    try {
+      const response = await emailjs.send("service_3yf7sod", "template_tx5pdu8", templateParams);
+      console.log("EmailJS Success:", response);
+      alert(`Thank you ${templateParams.name}, your order #${orderId} has been sent!`);
+      
+      cartItems = [];
+      cartDisplay.textContent = "🛒 Cart (0)";
+      updateCartTable();
+      checkoutForm.reset();
+      document.getElementById('checkoutSection').style.display='none';
+      document.getElementById('cartPage').style.display='none';
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+      alert("Failed to send order. Check console for details.");
+    }
   });
 
   // Modal Checklist
@@ -325,5 +337,7 @@
   document.getElementById('closeModal').onclick = ()=>overlay.style.display='none';
 </script>
 
+
 </body>
 </html>
+
