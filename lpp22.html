@@ -141,7 +141,7 @@
 </head>
 <body>
 
-  <!-- Header / Logo Bar -->
+<!-- Header / Logo Bar -->
 <header style="width:100%;padding:16px 24px;background:#11142a;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,0.4);position:sticky;top:0;z-index:200;">
   <img src="logo.png" alt="Business Logo" style="width:48px;height:48px;object-fit:contain;border-radius:10px;">
   <h1 style="font-size:22px;font-weight:700;color:white;">Kath and Paul's Tech Hub</h1>
@@ -172,53 +172,6 @@
 </section>
 
 <!-- Product Catalog -->
- <!-- Product Catalog -->
-<style>
-  .grid {
-    display: grid;
-    gap: 16px;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-
-  .product {
-    display: flex;
-    flex-direction: column;
-    background-color: #111;
-    border: 1px solid #333;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-
-  /* Image box with fixed aspect ratio */
-  .product .media {
-    width: 100%;
-    aspect-ratio: 1 / 1; /* square image area */
-    background: #000;
-  }
-
-  .product .media img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* fill the box like your sample image */
-    display: block;
-  }
-
-  /* Info below the image */
-  .product .info {
-    padding: 12px;
-  }
-
-  .product .price {
-    margin: 6px 0 12px;
-    font-weight: 600;
-  }
-
-  .product .actions {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-</style>
 <section class="wrap" id="catalog">
   <h2>Available iPhones</h2>
   <div class="grid">
@@ -228,7 +181,7 @@
         <h3>iPhone 11</h3>
         <div class="price">₱14,990</div>
         <div class="actions">
-          <button class="btn-sm primary add-to-cart" data-name="iPhone 11" data-price="14990">Add to Cart
+          <button class="btn-sm primary add-to-cart" data-name="iPhone 11" data-price="14990">Add to Cart</button>
           <button class="btn-sm" id="viewCert">View Certification</button>
         </div>
       </div>
@@ -260,6 +213,7 @@
   </div>
 </section>
 
+<!-- Checkout -->
 <section class="wrap" id="checkoutSection" style="display:none; margin-top:40px;">
   <h2>Checkout</h2>
   <form id="checkoutForm" class="floating-card">
@@ -289,8 +243,7 @@
   </form>
 </section>
 
-
-<!-- Cart Page Section -->
+<!-- Cart Page -->
 <section class="wrap" id="cartPage" style="display:none; margin-top:60px;">
   <h2>Your Cart</h2>
   <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
@@ -302,9 +255,7 @@
         <th style="padding:12px; border:1px solid #333;">Subtotal</th>
       </tr>
     </thead>
-    <tbody id="cartTableBody">
-      <!-- Items will be inserted here by JS -->
-    </tbody>
+    <tbody id="cartTableBody"></tbody>
   </table>
 
   <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
@@ -319,6 +270,7 @@
     </div>
   </div>
 </section>
+
 <!-- Benefits -->
 <section class="wrap" id="benefits">
   <h2>Why Choose Us</h2>
@@ -349,40 +301,13 @@
   </div>
 </section>
 
-<!-- Contact Form Modal -->
-<div class="overlay" id="contactOverlay">
-  <div class="modal">
-    <span class="close" id="closeContactModal">×</span>
-    <h3>Contact Us</h3>
-    <div class="floating-card">
-      <form id="inquiryForm" class="space-y-8">
-        <div>
-          <label>Full Name</label>
-          <input type="text" name="name" placeholder="Full Name" required />
-        </div>
-        <div>
-          <label>Email Address</label>
-          <input type="email" name="email" placeholder="Email Address" required />
-        </div>
-        <div>
-          <label>Message</label>
-          <textarea name="message" rows="6" placeholder="Type your message here..." required></textarea>
-        </div>
-        <div class="flex justify-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 <!-- Footer -->
 <footer id="contact">
   <p>© 2025 Premium Pre‑Loved iPhones — Honest, certified, and fairly priced.</p>
   <p>
     <a href="#catalog">Browse Available iPhones</a> | 
     <a href="#faq">FAQ</a> | 
-    <a href="#contact">Contact Us</a>
+    <a href="#contact">Contact Us</a> 
   </p>
   <p>Follow us on 
     <a href="#">Facebook</a>, 
@@ -419,21 +344,19 @@
   let cartItems = [];
   const cartDisplay = document.getElementById('cart');
   const addButtons = document.querySelectorAll('.add-to-cart');
+  const checkoutForm = document.getElementById('checkoutForm');
 
   // Add product to cart
   addButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const name = btn.getAttribute('data-name');
       const price = parseInt(btn.getAttribute('data-price'));
-      
-      // Check if item already exists, increase quantity
       const existingItem = cartItems.find(i => i.name === name);
       if (existingItem) {
         existingItem.units += 1;
       } else {
         cartItems.push({ name, price, units: 1 });
       }
-
       cartDisplay.textContent = `🛒 Cart (${cartItems.reduce((a,i)=>a+i.units,0)})`;
       alert(`${name} added to cart!`);
     });
@@ -446,7 +369,6 @@
     const totalEl = document.getElementById('cartTotal');
     tbody.innerHTML = '';
     let subtotal = 0;
-
     cartItems.forEach(item => {
       const row = document.createElement('tr');
       row.innerHTML = `
@@ -458,7 +380,6 @@
       tbody.appendChild(row);
       subtotal += item.price * item.units;
     });
-
     subtotalEl.textContent = subtotal;
     totalEl.textContent = subtotal;
   }
@@ -470,65 +391,7 @@
     document.getElementById('cartPage').scrollIntoView({ behavior: 'smooth' });
   });
 
-  // Checkout form submission
-  const checkoutForm = document.getElementById('checkoutForm');
-  checkoutForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    if(cartItems.length === 0){
-      alert("Your cart is empty!");
-      return;
-    }
-
-    const formData = new FormData(checkoutForm);
-    const orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const address = formData.get('address');
-    const payment = formData.get('payment');
-
-    // Calculate totals
-    const subtotal = cartItems.reduce((acc, i) => acc + (i.price * i.units), 0);
-    const shipping = 0;
-    const tax = 0;
-    const total = subtotal + shipping + tax;
-
-    // Prepare orders array for EmailJS
-    const ordersArray = cartItems.map(i => ({
-      name: i.name,
-      units: i.units,
-      price: i.price
-    }));
-
-  const templateParams = {
-  order_id: orderId,
-  email: email,
-  name: name,
-  address: address,
-  payment: payment,
-  orders: ordersArray,
-  cost: { shipping, tax, total }
-};
-
-
-    // Send email via EmailJS
-    emailjs.send("service_3yf7sod", "template_tx5pdu8", templateParams)
-      .then(() => {
-        alert(`Thank you ${name}, your order #${orderId} has been sent!`);
-        cartItems = [];
-        cartDisplay.textContent = "🛒 Cart (0)";
-        updateCartTable();
-        checkoutForm.reset();
-        document.getElementById('checkoutSection').style.display = 'none';
-        document.getElementById('cartPage').style.display = 'none';
-      })
-      .catch((err) => {
-        console.error(err);
-        alert("Oops! Something went wrong. Please try again.");
-      });
-  });
-
-  // Proceed to checkout button
+  // Proceed to checkout
   const checkoutBtn = document.getElementById('checkoutBtn');
   checkoutBtn.addEventListener('click', () => {
     if(cartItems.length === 0){
@@ -538,6 +401,50 @@
       document.getElementById('checkoutSection').style.display = 'block';
       document.getElementById('checkoutSection').scrollIntoView({behavior:'smooth'});
     }
+  });
+
+  // Checkout form submission
+  checkoutForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if(cartItems.length === 0){
+      alert("Your cart is empty!");
+      return;
+    }
+    const formData = new FormData(checkoutForm);
+    const orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const address = formData.get('address');
+    const payment = formData.get('payment');
+    const subtotal = cartItems.reduce((acc, i) => acc + (i.price * i.units), 0);
+    const total = subtotal;
+
+    const templateParams = {
+      order_id: orderId,
+      email,
+      name,
+      address,
+      payment,
+      orders: cartItems.map(item => `${item.name} x${item.units} @₱${item.price}`).join(', '),
+      total
+    };
+
+    console.log("Template Params:", templateParams);
+
+    emailjs.send("service_3yf7sod", "template_tx5pdu8", templateParams)
+      .then((response) => {
+        alert(`Thank you ${name}, your order #${orderId} has been sent!`);
+        cartItems = [];
+        cartDisplay.textContent = "🛒 Cart (0)";
+        updateCartTable();
+        checkoutForm.reset();
+        document.getElementById('checkoutSection').style.display = 'none';
+        document.getElementById('cartPage').style.display = 'none';
+      })
+      .catch((err) => {
+        console.error('EmailJS error:', err);
+        alert("Oops! Something went wrong. Please check the console for details.");
+      });
   });
 </script>
 
