@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Premium Pre‑Loved iPhones</title>
+
+  <!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+  emailjs.init("0WUHJFvOpwfXJZq8s"); // replace with your EmailJS public key
+</script>
+
+  <style>
+    :root {
+      --bg:#0f1220;
+      --ink:#f5f5f7;
+      --muted:#c7c7d1;
+      --accent:#b39ddb;
+      --cta:#7e57c2;
+      --cta-hover:#6b4bb2;
+      --shadow:0 8px 24px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;scroll-behavior:smooth;}
+    a{color:inherit;text-decoration:none}
+
+    /* Hero with background image */
+    .hero {
+      background:url('hero-bg.jpg') center/cover no-repeat;
+      position:relative;
+      color:white;
+      padding:120px 24px 80px;
+      text-align:center;
+    }
+    .hero::after {
+      content:"";
+      position:absolute;inset:0;
+      background:rgba(15,18,32,.65);
+    }
+    .hero-content {
+      position:relative;z-index:1;max-width:900px;margin:auto;
+    }
+    .hero h1 {font-size:clamp(36px,5vw,60px);margin-bottom:20px}
+    .hero p {color:var(--muted);margin-bottom:30px;font-size:18px}
+    .btn {
+      display:inline-block;padding:14px 22px;border-radius:12px;
+      font-weight:600;cursor:pointer;transition:.2s;
+    }
+    .btn-primary {background:var(--cta);color:white;box-shadow:var(--shadow)}
+    .btn-primary:hover {background:var(--cta-hover);transform:translateY(-2px)}
+    .btn-ghost {
+      border: 1px solid #000;  
+      color: white;            
+      background-color: #000;   
+    }
+    .btn-ghost:hover {
+      background-color: #222;  
+      border-color: #fff;      
+    }
+
+    /* Sections */
+    .wrap {max-width:1200px;margin:auto;padding:60px 24px}
+    h2 {font-size:32px;margin-bottom:30px;text-align:center}
+
+    /* Product grid */
+    .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+    .product {
+      background:#1a1d2f;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
+      display:flex;flex-direction:column
+    }
+    .product img {width:100%;height:220px;object-fit:cover}
+    .info {padding:20px}
+    .info h3 {margin-bottom:8px}
+    .price {font-weight:700;margin-bottom:12px}
+    .actions {display:flex;gap:10px}
+    .btn-sm {flex:1;padding:10px;border-radius:10px;font-size:14px}
+    .btn-sm.primary {background:var(--cta);color:white}
+    .btn-sm.primary:hover {background:var(--cta-hover)}
+
+    /* Benefits */
+    .benefits {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .card {background:#1a1d2f;padding:20px;border-radius:16px;box-shadow:var(--shadow)}
+    .card h3 {margin-bottom:10px}
+
+    /* Testimonials */
+    .testimonials {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .quote {background:#1a1d2f;padding:20px;border-radius:16px;box-shadow:var(--shadow);font-style:italic}
+
+    /* FAQ */
+    .faq {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+    .faq-item {background:#1a1d2f;padding:20px;border-radius:16px;box-shadow:var(--shadow)}
+
+    /* Footer */
+    footer {background:#11142a;color:var(--muted);padding:30px;text-align:center;margin-top:40px}
+    footer a {color:var(--accent)}
+    
+    /* Modal checklist */
+    .overlay {position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
+    .modal {background:#1a1d2f;padding:24px;border-radius:16px;max-width:600px;color:var(--ink)}
+    .close {float:right;cursor:pointer;font-weight:bold}
+
+    /* Navigation Button */
+    .nav-btn {
+      margin-left:auto;
+      background:var(--cta);
+      color:white;
+      padding:8px 16px;
+      border-radius:8px;
+      font-weight:600;
+      cursor:pointer;
+      transition:.2s;
+    }
+    .nav-btn:hover {background:var(--cta-hover)}
+
+    /* Navigation Links */
+    .nav-links {
+      display:flex;
+      gap:14px;
+      margin-left:auto;
+    }
+    .nav-links a {
+      color:white;
+      font-weight:500;
+      padding:8px 12px;
+      border-radius:8px;
+      transition:.2s;
+    }
+    .nav-links a:hover {
+      background:var(--cta);
+      color:white;
+    }
+
+    /* Contact Form */
+    .contact-section {background:#11142a;padding:60px 24px;}
+    .floating-card {background:#1a1d2f;padding:40px;border-radius:24px;max-width:700px;margin:auto;}
+    .floating-card input, .floating-card textarea {width:100%;padding:16px;border-radius:12px;border:1px solid #444;background:#0f1220;color:white;outline:none;margin-top:6px;margin-bottom:20px;}
+    .floating-card button {background:var(--cta);color:white;padding:14px 24px;border-radius:12px;font-weight:600;cursor:pointer;}
+    .floating-card button:hover {background:var(--cta-hover);} 
+  </style>
+</head>
+<body>
+
+  <!-- Header / Logo Bar -->
+<header style="width:100%;padding:16px 24px;background:#11142a;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,0.4);position:sticky;top:0;z-index:200;">
+  <img src="logo.png" alt="Business Logo" style="width:48px;height:48px;object-fit:contain;border-radius:10px;">
+  <h1 style="font-size:22px;font-weight:700;color:white;">Kath and Paul's Tech Hub</h1>
+  <nav class="nav-links">
+    <a href="#hero">Home</a>
+    <a href="#catalog">Catalog</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#testimonials">Testimonials</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div id="cart">🛒 Cart (0)</div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div style="max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;position:relative;z-index:1;">
+    <div class="hero-content" style="flex:1; min-width:300px;">
+      <h1>Premium iPhones, Pre-loved. Priced Right.</h1>
+      <p>Certified devices with verified battery health, honest parts disclosure, and fast delivery.</p>
+      <a href="#catalog" class="btn btn-primary">Browse Available iPhones</a>
+      <button class="btn btn-ghost" id="openChecklist">See Certification Checklist</button>
+    </div>
+    <div style="flex:1; display:flex; justify-content:center; min-width:300px;">
+      <img src="iphones.png" alt="Hero Image" style="width:350px; max-width:100%; object-fit:contain; border-radius:12px;">
+    </div>
+  </div>
+</section>
+
+<!-- Product Catalog -->
+ <!-- Product Catalog -->
+<style>
+  .grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+
+  .product {
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+    border: 1px solid #333;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  /* Image box with fixed aspect ratio */
+  .product .media {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* square image area */
+    background: #000;
+  }
+
+  .product .media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fill the box like your sample image */
+    display: block;
+  }
+
+  /* Info below the image */
+  .product .info {
+    padding: 12px;
+  }
+
+  .product .price {
+    margin: 6px 0 12px;
+    font-weight: 600;
+  }
+
+  .product .actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+</style>
+<section class="wrap" id="catalog">
+  <h2>Available iPhones</h2>
+  <div class="grid">
+    <div class="product">
+      <div class="media"><img src="ip11.png" alt="iPhone 11"></div>
+      <div class="info">
+        <h3>iPhone 11</h3>
+        <div class="price">₱14,990</div>
+        <div class="actions">
+          <button class="btn-sm primary add-to-cart" data-name="iPhone 11" data-price="14990">Add to Cart
+          <button class="btn-sm" id="viewCert">View Certification</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="media"><img src="ip12.png" alt="iPhone 12"></div>
+      <div class="info">
+        <h3>iPhone 12</h3>
+        <div class="price">₱18,990</div>
+        <div class="actions">
+          <button class="btn-sm primary add-to-cart" data-name="iPhone 12" data-price="18990">Add to Cart</button>
+          <button class="btn-sm" id="viewCert2">View Certification</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="media"><img src="ip13.png" alt="iPhone 13"></div>
+      <div class="info">
+        <h3>iPhone 13</h3>
+        <div class="price">₱23,990</div>
+        <div class="actions">
+          <button class="btn-sm primary add-to-cart" data-name="iPhone 13" data-price="23990">Add to Cart</button>
+          <button class="btn-sm" id="viewCert3">View Certification</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="checkoutSection" style="display:none; margin-top:40px;">
+  <h2>Checkout</h2>
+  <form id="checkoutForm" class="floating-card">
+    <div>
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Full Name" required />
+    </div>
+    <div>
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Email" required />
+    </div>
+    <div>
+      <label>Shipping Address</label>
+      <input type="text" name="address" placeholder="Full Address" required />
+    </div>
+    <div>
+      <label>Payment Method</label>
+      <select name="payment" required>
+        <option value="">Select Payment</option>
+        <option value="GCash">GCash</option>
+        <option value="COD">Cash on Delivery</option>
+      </select>
+    </div>
+    <div style="text-align:right; margin-top:20px;">
+      <button type="submit" class="btn btn-primary">Place Order</button>
+    </div>
+  </form>
+</section>
+
+
+<!-- Cart Page Section -->
+<section class="wrap" id="cartPage" style="display:none; margin-top:60px;">
+  <h2>Your Cart</h2>
+  <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
+    <thead>
+      <tr style="background:#1a1d2f; color:white;">
+        <th style="padding:12px; border:1px solid #333;">Product</th>
+        <th style="padding:12px; border:1px solid #333;">Price</th>
+        <th style="padding:12px; border:1px solid #333;">Quantity</th>
+        <th style="padding:12px; border:1px solid #333;">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody id="cartTableBody">
+      <!-- Items will be inserted here by JS -->
+    </tbody>
+  </table>
+
+  <div style="display:flex; flex-wrap:wrap; gap:20px; align-items:center;">
+    <div>
+      <input type="text" placeholder="Coupon code" style="padding:10px; border-radius:8px; border:1px solid #444; background:#0f1220; color:white;">
+      <button class="btn-sm primary" style="margin-left:10px;">Apply Coupon</button>
+    </div>
+    <div style="margin-left:auto; text-align:right;">
+      <p style="font-weight:600;">Subtotal: ₱<span id="cartSubtotal">0</span></p>
+      <p style="font-weight:600;">Total: ₱<span id="cartTotal">0</span></p>
+      <button id="checkoutBtn" class="btn btn-primary" style="margin-top:10px;">Proceed to Checkout</button>
+    </div>
+  </div>
+</section>
+<!-- Benefits -->
+<section class="wrap" id="benefits">
+  <h2>Why Choose Us</h2>
+  <div class="benefits">
+    <div class="card"><h3>Certified Diagnostics</h3><p>Every device passes a 20‑point check: Face/Touch ID, cameras, speakers, sensors, and connectivity.</p></div>
+    <div class="card"><h3>Transparent Parts</h3><p>Original vs. replaced parts disclosed with photos and condition grades (A/B/C).</p></div>
+    <div class="card"><h3>Warranty & Support</h3><p>7‑day replacement, 90‑day repair coverage, and fast chat support.</p></div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="wrap" id="testimonials">
+  <h2>What Our Customers Say</h2>
+  <div class="testimonials">
+    <div class="quote">“Battery at 89%, Face ID flawless—felt brand‑new.”</div>
+    <div class="quote">“Honest grading, fast delivery, and the unboxing felt premium.”</div>
+    <div class="quote">“Affordable yet reliable. Perfect for students and freelancers.”</div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="wrap" id="faq">
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+    <div class="faq-item"><h3>Are devices iCloud unlocked?</h3><p>Yes, verified before listing.</p></div>
+    <div class="faq-item"><h3>Can I test on delivery?</h3><p>Yes, optional doorstep check with courier waiting time.</p></div>
+    <div class="faq-item"><h3>Do you certify water resistance?</h3><p>No, we don’t certify water resistance on second‑hand devices.</p></div>
+  </div>
+</section>
+
+<!-- Contact Form Modal -->
+<div class="overlay" id="contactOverlay">
+  <div class="modal">
+    <span class="close" id="closeContactModal">×</span>
+    <h3>Contact Us</h3>
+    <div class="floating-card">
+      <form id="inquiryForm" class="space-y-8">
+        <div>
+          <label>Full Name</label>
+          <input type="text" name="name" placeholder="Full Name" required />
+        </div>
+        <div>
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="Email Address" required />
+        </div>
+        <div>
+          <label>Message</label>
+          <textarea name="message" rows="6" placeholder="Type your message here..." required></textarea>
+        </div>
+        <div class="flex justify-end">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer id="contact">
+  <p>© 2025 Premium Pre‑Loved iPhones — Honest, certified, and fairly priced.</p>
+  <p>
+    <a href="#catalog">Browse Available iPhones</a> | 
+    <a href="#faq">FAQ</a> | 
+    <a href="#contact">Contact Us</a>
+  </p>
+  <p>Follow us on 
+    <a href="#">Facebook</a>, 
+    <a href="#">Instagram</a>, 
+    <a href="#">Twitter</a>
+  </p>
+</footer>
+
+<!-- Modal Checklist -->
+<div class="overlay" id="overlay">
+  <div class="modal">
+    <span class="close" id="closeModal">×</span>
+    <h3>20‑Point Certification Checklist</h3>
+    <ul>
+      <li>✔ Battery health verified</li>
+      <li>✔ Face/Touch ID tested</li>
+      <li>✔ Cameras focus check</li>
+      <li>✔ Speakers & mic clarity</li>
+      <li>✔ Wi‑Fi/5G connectivity</li>
+      <li>✔ Original/replaced parts disclosed</li>
+      <li>✔ Charging port inspected</li>
+      <li>✔ Sensors tested (proximity, ambient, haptics)</li>
+      <li>✔ GPS & Bluetooth verified</li>
+      <li>✔ Frame & buttons inspected</li>
+      <li>✔ Back glass condition checked</li>
+      <li>✔ Lens scratches noted</li>
+      <li>✔ Water indicators inspected</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  // --- CART SYSTEM ---
+  let cartItems = [];
+  const cartDisplay = document.getElementById('cart');
+  const addButtons = document.querySelectorAll('.add-to-cart');
+
+  // Add product to cart
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-name');
+      const price = parseInt(btn.getAttribute('data-price'));
+      
+      // Check if item already exists, increase quantity
+      const existingItem = cartItems.find(i => i.name === name);
+      if (existingItem) {
+        existingItem.units += 1;
+      } else {
+        cartItems.push({ name, price, units: 1 });
+      }
+
+      cartDisplay.textContent = `🛒 Cart (${cartItems.reduce((a,i)=>a+i.units,0)})`;
+      alert(`${name} added to cart!`);
+    });
+  });
+
+  // Render cart items in table
+  function updateCartTable() {
+    const tbody = document.getElementById('cartTableBody');
+    const subtotalEl = document.getElementById('cartSubtotal');
+    const totalEl = document.getElementById('cartTotal');
+    tbody.innerHTML = '';
+    let subtotal = 0;
+
+    cartItems.forEach(item => {
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td style="padding:12px; border:1px solid #333;">${item.name}</td>
+        <td style="padding:12px; border:1px solid #333;">₱${item.price}</td>
+        <td style="padding:12px; border:1px solid #333;">${item.units}</td>
+        <td style="padding:12px; border:1px solid #333;">₱${item.price * item.units}</td>
+      `;
+      tbody.appendChild(row);
+      subtotal += item.price * item.units;
+    });
+
+    subtotalEl.textContent = subtotal;
+    totalEl.textContent = subtotal;
+  }
+
+  // Show cart page on cart icon click
+  cartDisplay.addEventListener('click', () => {
+    updateCartTable();
+    document.getElementById('cartPage').style.display = 'block';
+    document.getElementById('cartPage').scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Checkout form submission
+  const checkoutForm = document.getElementById('checkoutForm');
+  checkoutForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if(cartItems.length === 0){
+      alert("Your cart is empty!");
+      return;
+    }
+
+    const formData = new FormData(checkoutForm);
+    const orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const address = formData.get('address');
+    const payment = formData.get('payment');
+
+    // Calculate totals
+    const subtotal = cartItems.reduce((acc, i) => acc + (i.price * i.units), 0);
+    const shipping = 0;
+    const tax = 0;
+    const total = subtotal + shipping + tax;
+
+    // Prepare orders array for EmailJS
+    const ordersArray = cartItems.map(i => ({
+      name: i.name,
+      units: i.units,
+      price: i.price
+    }));
+
+  const templateParams = {
+  order_id: orderId,
+  email: email,
+  name: name,
+  address: address,
+  payment: payment,
+  orders: ordersArray,
+  cost: { shipping, tax, total }
+};
+
+
+    // Send email via EmailJS
+    emailjs.send("service_3yf7sod", "template_tx5pdu8", templateParams)
+      .then(() => {
+        alert(`Thank you ${name}, your order #${orderId} has been sent!`);
+        cartItems = [];
+        cartDisplay.textContent = "🛒 Cart (0)";
+        updateCartTable();
+        checkoutForm.reset();
+        document.getElementById('checkoutSection').style.display = 'none';
+        document.getElementById('cartPage').style.display = 'none';
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Oops! Something went wrong. Please try again.");
+      });
+  });
+
+  // Proceed to checkout button
+  const checkoutBtn = document.getElementById('checkoutBtn');
+  checkoutBtn.addEventListener('click', () => {
+    if(cartItems.length === 0){
+      alert("Your cart is empty.");
+    } else {
+      updateCartTable();
+      document.getElementById('checkoutSection').style.display = 'block';
+      document.getElementById('checkoutSection').scrollIntoView({behavior:'smooth'});
+    }
+  });
+</script>
+
+</body>
+</html>
