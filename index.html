@@ -8,7 +8,8 @@
   <!-- EmailJS -->
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
   <script>
-    emailjs.init("0WUHJFvOpwfXJZq8s"); // your actual public key
+    // Initialize EmailJS with your public key
+    emailjs.init("0WUHJFvOpwfXJZq8s");
   </script>
 
   <style>
@@ -282,10 +283,11 @@
     document.getElementById('checkoutSection').scrollIntoView({behavior:'smooth'});
   });
 
-  // Checkout Form
+  // --- Checkout Form with Detailed EmailJS Logging ---
   checkoutForm.addEventListener('submit', (e)=>{
     e.preventDefault();
     if(cartItems.length === 0){alert("Your cart is empty!"); return;}
+
     const formData = new FormData(checkoutForm);
     const orderId = 'ORD-'+Math.floor(Math.random()*1000000);
     const templateParams = {
@@ -298,8 +300,11 @@
       total: cartItems.reduce((acc,i)=>acc + i.price*i.units,0)
     };
 
+    console.log("Sending EmailJS templateParams:", templateParams);
+
     emailjs.send("service_3yf7sod","template_tx5pdu8",templateParams)
-      .then(()=> {
+      .then((response)=>{
+        console.log("EmailJS Success:", response);
         alert(`Thank you ${templateParams.name}, your order #${orderId} has been sent!`);
         cartItems = [];
         cartDisplay.textContent = "🛒 Cart (0)";
@@ -308,8 +313,8 @@
         document.getElementById('checkoutSection').style.display='none';
         document.getElementById('cartPage').style.display='none';
       })
-      .catch(err=>{
-        console.error('EmailJS error:', err);
+      .catch((err)=>{
+        console.error("EmailJS Error:", err);
         alert("Failed to send order. Check console for details.");
       });
   });
