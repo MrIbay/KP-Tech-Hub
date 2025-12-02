@@ -6,10 +6,10 @@
   <title>Premium Pre‑Loved iPhones</title>
 
   <!-- EmailJS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
-<script>
-  emailjs.init("0WUHJFvOpwfXJZq8s"); // replace with your EmailJS public key
-</script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+  <script>
+    emailjs.init("0WUHJFvOpwfXJZq8s"); // your actual public key
+  </script>
 
   <style>
     :root {
@@ -24,51 +24,20 @@
     *{box-sizing:border-box;margin:0;padding:0}
     body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;scroll-behavior:smooth;}
     a{color:inherit;text-decoration:none}
-
-    /* Hero with background image */
-    .hero {
-      background:url('hero-bg.jpg') center/cover no-repeat;
-      position:relative;
-      color:white;
-      padding:120px 24px 80px;
-      text-align:center;
-    }
-    .hero::after {
-      content:"";
-      position:absolute;inset:0;
-      background:rgba(15,18,32,.65);
-    }
-    .hero-content {
-      position:relative;z-index:1;max-width:900px;margin:auto;
-    }
-    .hero h1 {font-size:clamp(36px,5vw,60px);margin-bottom:20px}
-    .hero p {color:var(--muted);margin-bottom:30px;font-size:18px}
-    .btn {
-      display:inline-block;padding:14px 22px;border-radius:12px;
-      font-weight:600;cursor:pointer;transition:.2s;
-    }
+    .hero { background:url('hero-bg.jpg') center/cover no-repeat; position:relative; color:white; padding:120px 24px 80px; text-align:center;}
+    .hero::after {content:""; position:absolute; inset:0; background:rgba(15,18,32,.65);}
+    .hero-content {position:relative; z-index:1; max-width:900px; margin:auto;}
+    .hero h1 {font-size:clamp(36px,5vw,60px); margin-bottom:20px}
+    .hero p {color:var(--muted); margin-bottom:30px; font-size:18px}
+    .btn {display:inline-block;padding:14px 22px;border-radius:12px;font-weight:600;cursor:pointer;transition:.2s;}
     .btn-primary {background:var(--cta);color:white;box-shadow:var(--shadow)}
     .btn-primary:hover {background:var(--cta-hover);transform:translateY(-2px)}
-    .btn-ghost {
-      border: 1px solid #000;  
-      color: white;            
-      background-color: #000;   
-    }
-    .btn-ghost:hover {
-      background-color: #222;  
-      border-color: #fff;      
-    }
-
-    /* Sections */
+    .btn-ghost {border:1px solid #000; color:white; background-color:#000;}
+    .btn-ghost:hover {background-color:#222; border-color:#fff;}
     .wrap {max-width:1200px;margin:auto;padding:60px 24px}
     h2 {font-size:32px;margin-bottom:30px;text-align:center}
-
-    /* Product grid */
     .grid {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-    .product {
-      background:#1a1d2f;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);
-      display:flex;flex-direction:column
-    }
+    .product {background:#1a1d2f;border-radius:16px;overflow:hidden;box-shadow:var(--shadow); display:flex;flex-direction:column}
     .product img {width:100%;height:220px;object-fit:cover}
     .info {padding:20px}
     .info h3 {margin-bottom:8px}
@@ -77,71 +46,33 @@
     .btn-sm {flex:1;padding:10px;border-radius:10px;font-size:14px}
     .btn-sm.primary {background:var(--cta);color:white}
     .btn-sm.primary:hover {background:var(--cta-hover)}
-
-    /* Benefits */
     .benefits {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
     .card {background:#1a1d2f;padding:20px;border-radius:16px;box-shadow:var(--shadow)}
     .card h3 {margin-bottom:10px}
-
-    /* Testimonials */
     .testimonials {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
     .quote {background:#1a1d2f;padding:20px;border-radius:16px;box-shadow:var(--shadow);font-style:italic}
-
-    /* FAQ */
     .faq {display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
     .faq-item {background:#1a1d2f;padding:20px;border-radius:16px;box-shadow:var(--shadow)}
-
-    /* Footer */
     footer {background:#11142a;color:var(--muted);padding:30px;text-align:center;margin-top:40px}
     footer a {color:var(--accent)}
-    
-    /* Modal checklist */
     .overlay {position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100}
     .modal {background:#1a1d2f;padding:24px;border-radius:16px;max-width:600px;color:var(--ink)}
     .close {float:right;cursor:pointer;font-weight:bold}
-
-    /* Navigation Button */
-    .nav-btn {
-      margin-left:auto;
-      background:var(--cta);
-      color:white;
-      padding:8px 16px;
-      border-radius:8px;
-      font-weight:600;
-      cursor:pointer;
-      transition:.2s;
-    }
+    .nav-btn {margin-left:auto;background:var(--cta);color:white;padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s;}
     .nav-btn:hover {background:var(--cta-hover)}
-
-    /* Navigation Links */
-    .nav-links {
-      display:flex;
-      gap:14px;
-      margin-left:auto;
-    }
-    .nav-links a {
-      color:white;
-      font-weight:500;
-      padding:8px 12px;
-      border-radius:8px;
-      transition:.2s;
-    }
-    .nav-links a:hover {
-      background:var(--cta);
-      color:white;
-    }
-
-    /* Contact Form */
+    .nav-links {display:flex; gap:14px; margin-left:auto;}
+    .nav-links a {color:white; font-weight:500; padding:8px 12px; border-radius:8px; transition:.2s;}
+    .nav-links a:hover {background:var(--cta); color:white;}
     .contact-section {background:#11142a;padding:60px 24px;}
     .floating-card {background:#1a1d2f;padding:40px;border-radius:24px;max-width:700px;margin:auto;}
-    .floating-card input, .floating-card textarea {width:100%;padding:16px;border-radius:12px;border:1px solid #444;background:#0f1220;color:white;outline:none;margin-top:6px;margin-bottom:20px;}
+    .floating-card input, .floating-card textarea, .floating-card select {width:100%;padding:16px;border-radius:12px;border:1px solid #444;background:#0f1220;color:white;outline:none;margin-top:6px;margin-bottom:20px;}
     .floating-card button {background:var(--cta);color:white;padding:14px 24px;border-radius:12px;font-weight:600;cursor:pointer;}
     .floating-card button:hover {background:var(--cta-hover);} 
   </style>
 </head>
 <body>
 
-<!-- Header / Logo Bar -->
+<!-- Header -->
 <header style="width:100%;padding:16px 24px;background:#11142a;display:flex;align-items:center;gap:14px;box-shadow:0 4px 12px rgba(0,0,0,0.4);position:sticky;top:0;z-index:200;">
   <img src="logo.png" alt="Business Logo" style="width:48px;height:48px;object-fit:contain;border-radius:10px;">
   <h1 style="font-size:22px;font-weight:700;color:white;">Kath and Paul's Tech Hub</h1>
@@ -176,37 +107,34 @@
   <h2>Available iPhones</h2>
   <div class="grid">
     <div class="product">
-      <div class="media"><img src="ip11.png" alt="iPhone 11"></div>
+      <img src="ip11.png" alt="iPhone 11">
       <div class="info">
         <h3>iPhone 11</h3>
         <div class="price">₱14,990</div>
         <div class="actions">
           <button class="btn-sm primary add-to-cart" data-name="iPhone 11" data-price="14990">Add to Cart</button>
-          <button class="btn-sm" id="viewCert">View Certification</button>
         </div>
       </div>
     </div>
 
     <div class="product">
-      <div class="media"><img src="ip12.png" alt="iPhone 12"></div>
+      <img src="ip12.png" alt="iPhone 12">
       <div class="info">
         <h3>iPhone 12</h3>
         <div class="price">₱18,990</div>
         <div class="actions">
           <button class="btn-sm primary add-to-cart" data-name="iPhone 12" data-price="18990">Add to Cart</button>
-          <button class="btn-sm" id="viewCert2">View Certification</button>
         </div>
       </div>
     </div>
 
     <div class="product">
-      <div class="media"><img src="ip13.png" alt="iPhone 13"></div>
+      <img src="ip13.png" alt="iPhone 13">
       <div class="info">
         <h3>iPhone 13</h3>
         <div class="price">₱23,990</div>
         <div class="actions">
           <button class="btn-sm primary add-to-cart" data-name="iPhone 13" data-price="23990">Add to Cart</button>
-          <button class="btn-sm" id="viewCert3">View Certification</button>
         </div>
       </div>
     </div>
@@ -217,29 +145,23 @@
 <section class="wrap" id="checkoutSection" style="display:none; margin-top:40px;">
   <h2>Checkout</h2>
   <form id="checkoutForm" class="floating-card">
-    <div>
-      <label>Full Name</label>
-      <input type="text" name="name" placeholder="Full Name" required />
-    </div>
-    <div>
-      <label>Email</label>
-      <input type="email" name="email" placeholder="Email" required />
-    </div>
-    <div>
-      <label>Shipping Address</label>
-      <input type="text" name="address" placeholder="Full Address" required />
-    </div>
-    <div>
-      <label>Payment Method</label>
-      <select name="payment" required>
-        <option value="">Select Payment</option>
-        <option value="GCash">GCash</option>
-        <option value="COD">Cash on Delivery</option>
-      </select>
-    </div>
-    <div style="text-align:right; margin-top:20px;">
-      <button type="submit" class="btn btn-primary">Place Order</button>
-    </div>
+    <label>Full Name</label>
+    <input type="text" name="name" placeholder="Full Name" required />
+
+    <label>Email</label>
+    <input type="email" name="email" placeholder="Email" required />
+
+    <label>Shipping Address</label>
+    <input type="text" name="address" placeholder="Full Address" required />
+
+    <label>Payment Method</label>
+    <select name="payment" required>
+      <option value="">Select Payment</option>
+      <option value="GCash">GCash</option>
+      <option value="COD">Cash on Delivery</option>
+    </select>
+
+    <button type="submit" class="btn btn-primary">Place Order</button>
   </form>
 </section>
 
@@ -268,36 +190,6 @@
       <p style="font-weight:600;">Total: ₱<span id="cartTotal">0</span></p>
       <button id="checkoutBtn" class="btn btn-primary" style="margin-top:10px;">Proceed to Checkout</button>
     </div>
-  </div>
-</section>
-
-<!-- Benefits -->
-<section class="wrap" id="benefits">
-  <h2>Why Choose Us</h2>
-  <div class="benefits">
-    <div class="card"><h3>Certified Diagnostics</h3><p>Every device passes a 20‑point check: Face/Touch ID, cameras, speakers, sensors, and connectivity.</p></div>
-    <div class="card"><h3>Transparent Parts</h3><p>Original vs. replaced parts disclosed with photos and condition grades (A/B/C).</p></div>
-    <div class="card"><h3>Warranty & Support</h3><p>7‑day replacement, 90‑day repair coverage, and fast chat support.</p></div>
-  </div>
-</section>
-
-<!-- Testimonials -->
-<section class="wrap" id="testimonials">
-  <h2>What Our Customers Say</h2>
-  <div class="testimonials">
-    <div class="quote">“Battery at 89%, Face ID flawless—felt brand‑new.”</div>
-    <div class="quote">“Honest grading, fast delivery, and the unboxing felt premium.”</div>
-    <div class="quote">“Affordable yet reliable. Perfect for students and freelancers.”</div>
-  </div>
-</section>
-
-<!-- FAQ -->
-<section class="wrap" id="faq">
-  <h2>Frequently Asked Questions</h2>
-  <div class="faq">
-    <div class="faq-item"><h3>Are devices iCloud unlocked?</h3><p>Yes, verified before listing.</p></div>
-    <div class="faq-item"><h3>Can I test on delivery?</h3><p>Yes, optional doorstep check with courier waiting time.</p></div>
-    <div class="faq-item"><h3>Do you certify water resistance?</h3><p>No, we don’t certify water resistance on second‑hand devices.</p></div>
   </div>
 </section>
 
@@ -346,23 +238,18 @@
   const addButtons = document.querySelectorAll('.add-to-cart');
   const checkoutForm = document.getElementById('checkoutForm');
 
-  // Add product to cart
   addButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const name = btn.getAttribute('data-name');
       const price = parseInt(btn.getAttribute('data-price'));
       const existingItem = cartItems.find(i => i.name === name);
-      if (existingItem) {
-        existingItem.units += 1;
-      } else {
-        cartItems.push({ name, price, units: 1 });
-      }
+      if (existingItem) existingItem.units += 1;
+      else cartItems.push({name, price, units:1});
       cartDisplay.textContent = `🛒 Cart (${cartItems.reduce((a,i)=>a+i.units,0)})`;
       alert(`${name} added to cart!`);
     });
   });
 
-  // Render cart items in table
   function updateCartTable() {
     const tbody = document.getElementById('cartTableBody');
     const subtotalEl = document.getElementById('cartSubtotal');
@@ -371,12 +258,10 @@
     let subtotal = 0;
     cartItems.forEach(item => {
       const row = document.createElement('tr');
-      row.innerHTML = `
-        <td style="padding:12px; border:1px solid #333;">${item.name}</td>
-        <td style="padding:12px; border:1px solid #333;">₱${item.price}</td>
-        <td style="padding:12px; border:1px solid #333;">${item.units}</td>
-        <td style="padding:12px; border:1px solid #333;">₱${item.price * item.units}</td>
-      `;
+      row.innerHTML = `<td style="padding:12px; border:1px solid #333;">${item.name}</td>
+                       <td style="padding:12px; border:1px solid #333;">₱${item.price}</td>
+                       <td style="padding:12px; border:1px solid #333;">${item.units}</td>
+                       <td style="padding:12px; border:1px solid #333;">₱${item.price * item.units}</td>`;
       tbody.appendChild(row);
       subtotal += item.price * item.units;
     });
@@ -384,68 +269,55 @@
     totalEl.textContent = subtotal;
   }
 
-  // Show cart page on cart icon click
-  cartDisplay.addEventListener('click', () => {
+  document.getElementById('cart').addEventListener('click', ()=>{
     updateCartTable();
-    document.getElementById('cartPage').style.display = 'block';
-    document.getElementById('cartPage').scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('cartPage').style.display='block';
+    document.getElementById('cartPage').scrollIntoView({behavior:'smooth'});
   });
 
-  // Proceed to checkout
-  const checkoutBtn = document.getElementById('checkoutBtn');
-  checkoutBtn.addEventListener('click', () => {
-    if(cartItems.length === 0){
-      alert("Your cart is empty.");
-    } else {
-      updateCartTable();
-      document.getElementById('checkoutSection').style.display = 'block';
-      document.getElementById('checkoutSection').scrollIntoView({behavior:'smooth'});
-    }
+  document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+    if(cartItems.length === 0){alert("Your cart is empty."); return;}
+    updateCartTable();
+    document.getElementById('checkoutSection').style.display='block';
+    document.getElementById('checkoutSection').scrollIntoView({behavior:'smooth'});
   });
 
-  // Checkout form submission
-  checkoutForm.addEventListener('submit', (e) => {
+  // Checkout Form
+  checkoutForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-    if(cartItems.length === 0){
-      alert("Your cart is empty!");
-      return;
-    }
+    if(cartItems.length === 0){alert("Your cart is empty!"); return;}
     const formData = new FormData(checkoutForm);
-    const orderId = 'ORD-' + Math.floor(Math.random() * 1000000);
-    const name = formData.get('name');
-    const email = formData.get('email');
-    const address = formData.get('address');
-    const payment = formData.get('payment');
-    const subtotal = cartItems.reduce((acc, i) => acc + (i.price * i.units), 0);
-    const total = subtotal;
-
+    const orderId = 'ORD-'+Math.floor(Math.random()*1000000);
     const templateParams = {
       order_id: orderId,
-      email,
-      name,
-      address,
-      payment,
-      orders: cartItems.map(item => `${item.name} x${item.units} @₱${item.price}`).join(', '),
-      total
+      name: formData.get('name'),
+      email: formData.get('email'),
+      address: formData.get('address'),
+      payment: formData.get('payment'),
+      orders: cartItems.map(i=>`${i.name} x${i.units} @₱${i.price}`).join(', '),
+      total: cartItems.reduce((acc,i)=>acc + i.price*i.units,0)
     };
 
-    console.log("Template Params:", templateParams);
-
-    emailjs.send("service_3yf7sod", "template_tx5pdu8", templateParams)
-      .then((response) => {
-        alert(`Thank you ${name}, your order #${orderId} has been sent!`);
+    emailjs.send("service_3yf7sod","template_tx5pdu8",templateParams)
+      .then(()=> {
+        alert(`Thank you ${templateParams.name}, your order #${orderId} has been sent!`);
         cartItems = [];
         cartDisplay.textContent = "🛒 Cart (0)";
         updateCartTable();
         checkoutForm.reset();
-        document.getElementById('checkoutSection').style.display = 'none';
-        document.getElementById('cartPage').style.display = 'none';
+        document.getElementById('checkoutSection').style.display='none';
+        document.getElementById('cartPage').style.display='none';
       })
-      .catch((err) => {
+      .catch(err=>{
         console.error('EmailJS error:', err);
-        alert("Oops! Something went wrong. Please check the console for details.");
+        alert("Failed to send order. Check console for details.");
       });
   });
+
+  // Modal Checklist
+  const overlay = document.getElementById('overlay');
+  document.getElementById('openChecklist').onclick = ()=>overlay.style.display='flex';
+  document.getElementById('closeModal').onclick = ()=>overlay.style.display='none';
 </script>
 
 </body>
