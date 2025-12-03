@@ -2,9 +2,9 @@
 <html lang="en">
  <head>
   <meta charset="UTF-8">
-  <title>KP Tech Hub - Premium 2nd Hand iPhones</title><!-- Tailwind CDN -->
+  <title>KP Tech Hub - Premium 2nd Hand iPhones</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <script src="https://cdn.tailwindcss.com"></script><!-- Canva SDKs -->
+  <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
 
 
@@ -19,7 +19,6 @@
       padding: 0;
     }
 
-    /* Simple iPhone float animation */
     @keyframes floatPhone {
       0% { transform: translateY(0) rotate(-8deg); }
       50% { transform: translateY(-6px) rotate(-6deg); }
@@ -41,13 +40,13 @@
       animation: pulseGlow 4s ease-in-out infinite;
     }
 
-    /* Custom focus outline for accessibility */
+  
     .focus-outline:focus-visible {
       outline: 2px solid #ffffff;
       outline-offset: 2px;
     }
 
-    /* Old site styles */
+ 
     :root {
       --bg:#0f1220;
       --ink:#f5f5f7;
@@ -66,8 +65,8 @@
     .product {background:#1a1d2f;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
     .product img {
   width: 100%;
-  height: auto; /* automatically adjusts */
-  max-height: 220px; /* optional: limit size */
+  height: auto; 
+  max-height: 220px; 
   object-fit: contain;
 }
 
@@ -95,7 +94,7 @@
     .modal {background:#1a1d2f;padding:24px;border-radius:16px;max-width:600px;color:var(--ink)}
     .close {float:right;cursor:pointer;font-weight:bold}
 
-    /* Cart sidebar */
+  
     .cart-btn {
       position: fixed;
       right: 20px;
@@ -133,22 +132,21 @@
     .btn-ghost { background:transparent; border:1px solid rgba(255,255,255,0.06); padding:8px 12px; border-radius:10px; color:var(--ink); cursor:pointer;}
     .btn-primary { background:linear-gradient(180deg,#7e57c2,#6b4bb2); color:white; padding:10px 14px; border-radius:10px; cursor:pointer; font-weight:700; border:none; }
 
-    /* success modal */
+   
     .success-box { background: linear-gradient(180deg,#05202a,#063341); padding:22px;border-radius:14px;color:#e6fff7;max-width:480px;text-align:center;}
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-  <!-- EmailJS -->
+  
   <script src="https://cdn.emailjs.com/sdk/3.11.0/email.min.js"></script>
   <script>
-    // NOTE: Replace this public key with your EmailJS public key.
-    // You can also call emailjs.init(...) later inside the main script below.
-    (function(){ try { emailjs.init("0WUHJFvOpwfXJZq8s"); } catch(e) { /* ignore if replaced later */ } })();
+  
+    (function(){ try { emailjs.init("0WUHJFvOpwfXJZq8s"); } catch(e) {  } })();
   </script>
  </head>
  <body class="w-full h-full bg-slate-950">
 
-  <!-- HEADER: keep new design (unchanged logo/layout) -->
+
   <header class="w-full">
    <div class="w-full max-w-5xl mx-auto px-4 pt-6 pb-4 flex items-center justify-between gap-4">
     <div class="flex items-center gap-3">
@@ -172,8 +170,6 @@
     </div>
    </div>
   </header>
-
-  <!-- MAIN HERO -->
   <main class="w-full">
    <section class="w-full">
     <div class="w-full max-w-5xl mx-auto px-4 pb-12 pt-2 md:pt-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
@@ -185,7 +181,7 @@
       </div>
       <div class="flex flex-wrap items-center gap-3 pt-2"><a id="hero-cta-btn" href="#products" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-sky-500 text-slate-950 text-sm font-semibold shadow-lg shadow-sky-500/40 hover:bg-sky-400 transition-colors focus-outline"> <span id="hero-cta-text">Browse iPhones</span> <span aria-hidden="true">➜</span> </a> <button id="open-cart-btn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-slate-600 text-slate-100 text-xs md:text-sm hover:border-sky-400 hover:text-sky-400 transition-colors focus-outline">Open Cart</button>
       </div>
-     </div><!-- Animated iPhone visual -->
+     </div>
      <div class="relative flex justify-center md:justify-end">
       <div class="iphone-glow-anim absolute inset-0 flex items-center justify-center pointer-events-none">
        <div class="w-48 h-48 md:w-56 md:h-56 rounded-full bg-sky-500/20 blur-3xl"></div>
@@ -234,7 +230,7 @@
     </div>
    </section>
 
-   <!-- About section (added so nav anchor has a target) -->
+  
    <section class="wrap" id="about">
      <h2>About KP Tech Hub</h2>
      <div class="card">
@@ -242,7 +238,7 @@
      </div>
    </section>
 
-   <!-- Products Grid -->
+  
    <section class="wrap" id="products">
      <h2>Available iPhones</h2>
      <div class="grid">
@@ -282,7 +278,7 @@
      </div>
    </section>
 
-   <!-- Benefits, Testimonials, FAQ -->
+   
    <section class="wrap" id="benefits">
      <h2>Why Choose Us</h2>
      <div class="benefits">
@@ -310,7 +306,6 @@
      </div>
    </section>
 
-   <!-- Contact / Checkout (kept as backup; primary flow uses cart->checkout modal) -->
    <section class="contact-section" id="contact">
      <div class="floating-card" id="checkoutSection">
        <h2>Place an Order (Backup)</h2>
@@ -328,7 +323,7 @@
      </div>
    </section>
 
-   <!-- Modal for Certification -->
+
    <div class="overlay" id="overlay">
      <div class="modal" id="certModal">
        <span class="close" id="closeModal">×</span>
@@ -353,14 +348,14 @@
 
   </main>
 
-  <!-- Cart floating button -->
+
   <div id="cart-floating-btn" class="cart-btn" aria-label="Open cart">
     <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.2 6.3A1 1 0 0 0 6.8 21h10.4a1 1 0 0 0 .98-.81L19 13M7 13L5.4 5M16 21a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-8 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
     <span>Cart</span>
     <span id="cart-count" class="cart-badge">0</span>
   </div>
 
-  <!-- Cart Panel -->
+
   <aside id="cart-panel" class="cart-panel" aria-hidden="true">
     <div class="head">
       <div>
@@ -372,7 +367,7 @@
       </div>
     </div>
     <div class="cart-items" id="cart-items">
-      <!-- cart items go here -->
+ 
     </div>
     <div class="cart-footer">
       <div class="flex items-center justify-between mb-3">
@@ -389,7 +384,7 @@
     </div>
   </aside>
 
-  <!-- Checkout Modal (used when clicking Place Order) -->
+  
   <div class="overlay" id="checkout-overlay" style="display:none;">
     <div class="modal" id="checkout-modal">
       <span class="close" id="checkout-close">×</span>
@@ -412,7 +407,7 @@
     </div>
   </div>
 
-  <!-- Success Modal -->
+
   <div class="overlay" id="success-overlay" style="display:none;">
     <div class="success-box">
       <h3>Order Sent</h3>
@@ -423,7 +418,7 @@
     </div>
   </div>
 
- <!-- Footer -->
+
  <footer class="w-full border-t border-slate-800/80">
    <div class="w-full max-w-5xl mx-auto px-4 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
     <p class="text-[11px] text-slate-500 text-center sm:text-left">© KP Tech Hub. All rights reserved.</p>
@@ -431,7 +426,7 @@
    </div>
  </footer>
 
-<!-- EmailJS SDK -->
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 
 <script>
@@ -439,7 +434,7 @@ const EMAILJS_PUBLIC_KEY = '0WUHJFvOpwfXJZq8s';
 const EMAILJS_SERVICE_ID = 'service_3yf7sod';
 const EMAILJS_TEMPLATE_ID = 'template_tx5pdu8';
 
-// Init EmailJS
+
 try {
   if (EMAILJS_PUBLIC_KEY) emailjs.init(EMAILJS_PUBLIC_KEY);
   else console.info('EmailJS public key not set.');
@@ -447,10 +442,9 @@ try {
   console.warn('EmailJS init error:', err);
 }
 
-// Utility: format PHP peso
+
 const formatPHP = v => `₱${v.toLocaleString('en-PH')}`;
 
-// --- Elements ---
 const cartBtn = document.getElementById('cart-floating-btn');
 const cartPanel = document.getElementById('cart-panel');
 const cartCountEl = document.getElementById('cart-count');
@@ -470,18 +464,17 @@ const successOk = document.getElementById('success-ok');
 const successMsg = document.getElementById('success-msg');
 const CART_LS_KEY = 'kptechhub_cart_v1';
 
-// Load cart from localStorage
+
 let cartItems = JSON.parse(localStorage.getItem(CART_LS_KEY) || '[]');
 
-// Save cart
+
 const saveCart = () => localStorage.setItem(CART_LS_KEY, JSON.stringify(cartItems));
 
-// Escape HTML
+
 const escapeHtml = s => String(s).replace(/[&<>"'`=\/]/g, c =>
   ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'})[c]
 );
 
-// Flash message
 function flashMessage(msg){
   const el = document.createElement('div');
   el.style.position = 'fixed';
@@ -498,7 +491,7 @@ function flashMessage(msg){
   setTimeout(()=> el.remove(), 2000);
 }
 
-// Render cart
+
 function renderCart(){
   cartCountEl.textContent = cartItems.reduce((sum,it)=>sum+it.units,0);
   cartItemsContainer.innerHTML = '';
@@ -533,7 +526,7 @@ function renderCart(){
   const subtotal = cartItems.reduce((s,it)=>s+it.price*it.units,0);
   cartSubtotalEl.textContent = formatPHP(subtotal);
 
-  // Attach buttons
+ 
   cartItemsContainer.querySelectorAll('.inc').forEach(b=>b.addEventListener('click', e=>{
     const idx = Number(e.currentTarget.dataset.idx);
     cartItems[idx].units++;
@@ -553,7 +546,7 @@ function renderCart(){
   }));
 }
 
-// Add to cart
+
 function addToCart(name, price, imgSrc){
   const existing = cartItems.find(it=>it.name===name);
   if(existing) existing.units++; 
@@ -561,7 +554,7 @@ function addToCart(name, price, imgSrc){
   saveCart(); renderCart(); flashMessage(`${name} added to cart`);
 }
 
-// Product buttons
+
 document.querySelectorAll('.add-to-cart').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const name = btn.dataset.name;
@@ -571,7 +564,7 @@ document.querySelectorAll('.add-to-cart').forEach(btn=>{
   });
 });
 
-// View cert modal
+
 document.querySelectorAll('.view-cert').forEach(btn=>{
   btn.addEventListener('click', ()=>{
     const certText = btn.dataset.cert || 'Certified device.';
@@ -581,18 +574,18 @@ document.querySelectorAll('.view-cert').forEach(btn=>{
 });
 document.getElementById('closeModal').addEventListener('click', ()=>document.getElementById('overlay').style.display='none');
 
-// Cart open/close
+
 cartBtn.addEventListener('click', ()=>{cartPanel.classList.add('open'); cartPanel.setAttribute('aria-hidden','false');});
 closeCartBtn.addEventListener('click', ()=>{cartPanel.classList.remove('open'); cartPanel.setAttribute('aria-hidden','true');});
 if(openCartHeaderBtn) openCartHeaderBtn.addEventListener('click', ()=> cartPanel.classList.add('open'));
 
-// Clear cart
+
 clearCartBtn.addEventListener('click', ()=>{
   if(!confirm('Clear cart?')) return;
   cartItems=[]; saveCart(); renderCart();
 });
 
-// --- EmailJS checkout ---
+
 function sendCheckoutEmail(name,email,address,payment){
   if(cartItems.length===0){ alert('Cart empty!'); return; }
 
@@ -618,7 +611,7 @@ function sendCheckoutEmail(name,email,address,payment){
   });
 }
 
-// Main checkout form
+
 if(cartCheckoutForm){
   cartCheckoutForm.addEventListener('submit', e=>{
     e.preventDefault();
@@ -627,7 +620,7 @@ if(cartCheckoutForm){
   });
 }
 
-// Backup form
+
 const backupForm = document.getElementById('checkoutForm');
 if(backupForm){
   backupForm.addEventListener('submit', e=>{
@@ -637,15 +630,15 @@ if(backupForm){
   });
 }
 
-// Success overlay
+
 successOk.addEventListener('click', ()=> successOverlay.style.display='none');
 
-// Close overlays on outside click
+
 document.querySelectorAll('.overlay').forEach(ov=>{
   ov.addEventListener('click', e=>{if(e.target===ov) ov.style.display='none';});
 });
 
-// Escape key closes overlays and cart
+
 document.addEventListener('keydown', e=>{
   if(e.key==='Escape'){
     if(cartPanel.classList.contains('open')) cartPanel.classList.remove('open');
@@ -653,22 +646,22 @@ document.addEventListener('keydown', e=>{
   }
 });
 
-// Initial render
+
 renderCart();
 console.info('KP Tech Hub cart script loaded.');
 
-// --- Make "Place Order" button in cart work ---
+
 if (cartCheckoutBtn) {
   cartCheckoutBtn.addEventListener('click', () => {
     if (cartItems.length === 0) {
       alert('Your cart is empty!');
       return;
     }
-    // Show the checkout overlay and modal
+   
     if (checkoutOverlay) checkoutOverlay.style.display = 'flex';
     if (checkoutModal) checkoutModal.style.display = 'block';
   });
-  // --- Make "Cancel" button in checkout modal work ---
+  
 if (checkoutCancel) {
   checkoutCancel.addEventListener('click', () => {
     if (checkoutOverlay) checkoutOverlay.style.display = 'none';
@@ -682,6 +675,7 @@ if (checkoutCancel) {
 
 </body>
 </html>
+
 
 
 
